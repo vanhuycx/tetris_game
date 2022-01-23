@@ -3,5 +3,3 @@ node_modules
 dist
 dist-ssr
 *.local
-postcss.config.js
-tailwind.config.js
