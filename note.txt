@@ -2,13 +2,13 @@ Tetris game brainstorming:
 
 + game main board
 + score board
+    - score, pause-resume button, and restart button
 + next block board
 + block component
-+ start, pause-resume, and restart button
 + control button for block 
-    1. Left, right move 
-    2. Rotate button
-    3. Move down fast button
+    - Left, right move 
+    - Rotate button
+    - Move down fast button
 + message popup
 + timer - game over, next level?
 
