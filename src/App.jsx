@@ -2,6 +2,8 @@ import React from "react"
 import './App.css'
 import GridSquare from "./components/GridSquare"
 import GridBoard from "./components/GridBoard"
+import NextBlock from "./components/NextBlock"
+
 
 const App = () => {
   return (
@@ -11,7 +13,7 @@ const App = () => {
         </header>
 
         <GridBoard/>
-          
+        <NextBlock/>
       </div>
       
   )

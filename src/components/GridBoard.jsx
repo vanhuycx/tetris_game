@@ -2,8 +2,7 @@ import React from "react";
 import GridSquare from "./GridSquare";
 
 // Represents a 10 x 18 grid of grid squares
-const GridBoard = () => {
-
+const GridBoard = ({}) => {
 
   // generates an array of 18 rows, each containing 10 GridSquares.
   const grid = []
@@ -14,8 +13,6 @@ const GridBoard = () => {
           grid[row].push(<GridSquare key={`${col}${row}`} color="1"/>)
       }
   }
-  console.log({grid})
-
   return (
         <div className="grid-board">
             {grid}
