@@ -1,9 +1,14 @@
-
-import { useState } from 'react'
+import './App.css'
 
 const App = () => {
   return (
-      <h1>Tetris for Fun</h1>
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Tetris for Fun</h1>
+        </header>
+          
+      </div>
+      
   )
 }
 
