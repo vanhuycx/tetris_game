@@ -16,7 +16,6 @@ const App = () => {
         <NextBlock/>
         <ScoreBoard/>
       </div>
-      
   )
 }
 
