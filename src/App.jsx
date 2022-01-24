@@ -1,9 +1,10 @@
 import React from "react"
 import './App.css'
-import GridSquare from "./components/GridSquare"
+
 import GridBoard from "./components/GridBoard"
 import NextBlock from "./components/NextBlock"
 import ScoreBoard from "./components/ScoreBoard"
+import Controls from "./components/Controls"
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <GridBoard/>
         <NextBlock/>
         <ScoreBoard/>
+        <Controls/>
       </div>
   )
 }
