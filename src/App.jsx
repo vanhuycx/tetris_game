@@ -2,7 +2,7 @@
 import React, { createFactory } from "react"
 import { createStore } from "redux"
 import { Provider } from "react-redux"
-import {reducer} from './reducers'
+import reducers from './reducers'
 
 // CSS
 import './App.css'
@@ -14,7 +14,7 @@ import ScoreBoard from "./components/ScoreBoard"
 import Controls from "./components/Controls"
 import MessagePopup from "./components/MessagePopup"
 
-const store = createStore(reducer)
+const store = createStore(reducers)
 
 const App = () => {
   return (
