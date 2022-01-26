@@ -226,7 +226,7 @@ export const addBlockToGrid = (shape, grid, x, y, rotation)=> {
 }
 
 // Checks for completed rows and scores points
-const checkRows = (grid) => {
+export const checkRows = (grid) => {
    // Points increase for each row completed
   // i.e. 40 points for completing one row, 100 points for two rows
   const points = [0, 40, 100, 300, 1200]

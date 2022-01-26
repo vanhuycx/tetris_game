@@ -3,7 +3,7 @@ import {
     PAUSE, RESUME, RESTART, GAME_OVER
   } from '../actions'
 
-import { defaultState,nextRotation, canMoveTo } from "../utils"
+import { defaultState,nextRotation, canMoveTo,addBlockToGrid,checkRows,randomShape } from "../utils"
 
 
   
@@ -20,8 +20,8 @@ import { defaultState,nextRotation, canMoveTo } from "../utils"
         return state
   
       case MOVE_RIGHT:
-        if (canMoveTo(shape,grid,x-1,y,rotation)){
-          return {...state,x: x-1}
+        if (canMoveTo(shape,grid,x+1,y,rotation)){
+          return {...state,x: x+1}
         }
   
         return state
@@ -34,8 +34,33 @@ import { defaultState,nextRotation, canMoveTo } from "../utils"
         return state
   
       case MOVE_DOWN:
-  
-        return state
+        // Get the next potential Y position
+        const maybeY =  y + 1
+
+        if (canMoveTo(shape,grid,x,maybeY,rotation)) {
+          return {...state, y: maybeY}
+        }
+
+          // If not place the block
+        const newGrid = addBlockToGrid(shape, grid, x, y, rotation)
+        const newState = defaultState()
+        newState.grid = newGrid
+        newState.shape = nextShape
+        newState.nextShape = randomShape()
+        newState.score = score
+        newState.isRunning = isRunning
+        
+        if (!canMoveTo(nextShape, newGrid, 0, 4, 0)) {
+          // Game Over
+          console.log("Game Should be over...")
+          newState.shape = 0
+          return { ...state, gameOver: true }
+        }
+        // Update the score based on if rows were completed or not
+        newState.score = score + checkRows(newGrid)
+      
+        return newState
+        
   
       case RESUME:
   
