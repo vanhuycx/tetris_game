@@ -5,7 +5,7 @@ import {moveDown, moveLeft,moveRight,rotate} from '../actions'
 
 const Controls = ({}) => {
   const dispatch = useDispatch()
-  const isRunning = useSelector((state)=>state.isRunning)
+  const isRunning = useSelector((state)=>state.game.isRunning)
 
 
   return (
