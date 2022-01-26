@@ -35,30 +35,38 @@ import { defaultState,nextRotation, canMoveTo,addBlockToGrid,checkRows,randomSha
   
       case MOVE_DOWN:
         // Get the next potential Y position
-        const maybeY =  y + 1
+          const maybeY = y + 1
 
-        if (canMoveTo(shape,grid,x,maybeY,rotation)) {
-          return {...state, y: maybeY}
-        }
+          // Check if the current block can move here
+          if (canMoveTo(shape, grid, x, maybeY, rotation)) {
+              // If so move down don't place the block
+              return { ...state, y: maybeY }
+          }
 
           // If not place the block
-        const newGrid = addBlockToGrid(shape, grid, x, y, rotation)
-        const newState = defaultState()
-        newState.grid = newGrid
-        newState.shape = nextShape
-        newState.nextShape = randomShape()
-        newState.score = score
-        newState.isRunning = isRunning
-        
-        if (!canMoveTo(nextShape, newGrid, 0, 4, 0)) {
-          // Game Over
-          console.log("Game Should be over...")
-          newState.shape = 0
-          return { ...state, gameOver: true }
-        }
-        // Update the score based on if rows were completed or not
-        newState.score = score + checkRows(newGrid)
-      
+          // (this returns an object with a grid and gameover bool)
+          const obj = addBlockToGrid(shape, grid, x, y, rotation)
+          const newGrid = obj.grid
+          const gameOver = obj.gameOver
+
+          if (gameOver) {
+            // Game Over
+            const newState = { ...state }
+            newState.shape = 0
+            newState.grid = newGrid
+            return { ...state, gameOver: true }
+          }
+
+          // reset somethings to start a new shape/block
+          const newState = defaultState()
+          newState.grid = newGrid
+          newState.shape = nextShape
+          newState.score = score
+          newState.isRunning = isRunning
+
+          // TODO: Check and Set level
+          // Score increases decrease interval
+          newState.score = score + checkRows(newGrid)
         return newState
         
   
@@ -76,7 +84,7 @@ import { defaultState,nextRotation, canMoveTo,addBlockToGrid,checkRows,randomSha
   
       case RESTART:
   
-        return state
+        return defaultState()
   
       default:
         return state
