@@ -20,10 +20,16 @@ import { defaultState,nextRotation, canMoveTo } from "../utils"
         return state
   
       case MOVE_RIGHT:
+        if (canMoveTo(shape,grid,x-1,y,rotation)){
+          return {...state,x: x-1}
+        }
   
         return state
   
       case MOVE_LEFT:
+        if (canMoveTo(shape,grid,x-1,y,rotation)){
+          return {...state,x: x-1}
+        }
   
         return state
   
