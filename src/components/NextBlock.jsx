@@ -13,7 +13,7 @@ const NextBlock = ({}) => {
     //Map the block to the grid
     const grid = box.map((rowArray,row)=>{
         return rowArray.map((square,col)=>{
-            return <GridSquare key={`${row}${col}`} color={square}/>
+            return <GridSquare key={`${row}${col}`} color={square===0 ? 0 : nextShape}/>
         })
     })
 

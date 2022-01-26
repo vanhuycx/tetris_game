@@ -174,29 +174,29 @@ export const nextRotation = (shape,rotation) => {
 
 export const canMoveTo = (shape, grid, x, y, rotation) => {
   const currentShape = shapes[shape][rotation]
-  // Loop through all rows and cols of the **shape**
+  // Get the width and height of the grid
+  const gridWidth = grid[0].length - 1
+  const gridHeight = grid.length - 1
+  // Loop over the shape array
   for (let row = 0; row < currentShape.length; row++) {
       for (let col = 0; col < currentShape[row].length; col++) {
-          // Look for a 1 here
+          // If the value isn't 0 it's part of the shape
           if (currentShape[row][col] !== 0) {
-              // x offset on grid
+              // Offset the square to map it to the larger grid
               const proposedX = col + x
-              // y offset on grid
               const proposedY = row + y
-              if (proposedY < 0) {
-                  continue
-              }
-              // Get the row on the grid
+              // Get the possible row. This might be undefined if we're above the top
               const possibleRow = grid[proposedY]
-              // Check row exists
-              if (possibleRow) {
-                  // Check if this column in the row is undefined, if it's off the edges, 0, and empty
-                  if (possibleRow[proposedX] === undefined || possibleRow[proposedX] !== 0) {
-                      // undefined or not 0 and it's occupied we can't move here.
+
+              // Off the left or right side or off the bottom return false
+              if (proposedX < 0 || proposedX > gridWidth || proposedY > gridHeight) {
+                  return false
+              } else if (possibleRow !== undefined) {
+                  // If the row is not undefined you're on the grid
+                  if (possibleRow[proposedX] !== 0) {
+                      // This square must be filled
                       return false
                   }
-              } else {
-                  return false
               }
           }
       }
