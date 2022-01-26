@@ -64,11 +64,11 @@ import { defaultState,nextRotation, canMoveTo,addBlockToGrid,checkRows,randomSha
   
       case RESUME:
   
-        return state
+        return {...state,isRunning:true}
   
       case PAUSE:
   
-        return state
+        return {...state,isRunning:false}
   
       case GAME_OVER:
   

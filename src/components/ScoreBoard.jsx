@@ -20,7 +20,7 @@ const ScoreBoard = () => {
             } else {
               dispatch(resume())
             }
-          }}>Play</button>
+          }}>{isRunning?'Pause':'Play'}</button>
           <button className="score-board-button" onClick={(e)=>{dispatch(restart())}}>Restart</button>
       </div>
   )
