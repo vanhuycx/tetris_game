@@ -211,7 +211,6 @@ export const addBlockToGrid = (shape, grid, x, y, rotation)=> {
 
   //Copy the grid
   const newGrid = [...grid];
-  console.log(newGrid)
 
   //Map the block onto the grid
   for (let row = 0; row < block.length; row++){
@@ -221,7 +220,6 @@ export const addBlockToGrid = (shape, grid, x, y, rotation)=> {
       }
     }
   }
-  console.log(newGrid)
   return newGrid
 }
 
