@@ -17,9 +17,6 @@ const NextBlock = ({}) => {
         })
     })
 
-   
-
-
   return (
       <div className="next-block">
           {grid}
